@@ -9,6 +9,7 @@ import {
   Example7,
   Example8,
   Example9,
+  Example10,
 } from './examples';
 import s from './style.css';
 
@@ -51,6 +52,7 @@ class DevelopmentApp extends React.Component {
           <option value="7">Simple Carousel with react-redux</option>
           <option value="8">Horizontal Carousel (With lockOnWindowScroll set to TRUE)</option>
           <option value="9">Horizontal Carousel Auto Play</option>
+          <option value="10">Control Carousel via Context</option>
         </select>
         <hr />
         { (this.state.value === '0' || this.state.value === '1') && (
@@ -104,6 +106,12 @@ class DevelopmentApp extends React.Component {
         { (this.state.value === '0' || this.state.value === '9') && (
           <section id="example--9">
             <Example9 />
+          </section>
+        )}
+
+        { (this.state.value === '0' || this.state.value === '10') && (
+          <section id="example--10">
+            <Example10 />
           </section>
         )}
 
