@@ -9,6 +9,7 @@ class Example10 extends React.Component {
   constructor(props) {
     super(props);
     this.addSlide = this.addSlide.bind(this);
+    this.enableAnimation = this.enableAnimation.bind(this);
     this.handleStoreChange = this.handleStoreChange.bind(this);
     this.setRef = this.setRef.bind(this);
   }
@@ -27,8 +28,14 @@ class Example10 extends React.Component {
     this.subscribeToStore();
   }
 
-  addSlide() {
+  addSlide(event) {
+    event.stopPropagation();
+    this.getStore().setStoreState({ disableAnimation: true });
     this.setState(state => ({ ...state, totalSlides: state.totalSlides + 1 }));
+  }
+
+  enableAnimation() {
+    this.getStore().setStoreState({ disableAnimation: false });
   }
 
   handleStoreChange() {
@@ -51,6 +58,7 @@ class Example10 extends React.Component {
         naturalSlideWidth={400}
         naturalSlideHeight={500}
         ref={this.setRef}
+        onClick={this.enableAnimation}
       >
         <h1 className={s.headline}>Control Caorusel via Context</h1>
         <Slider className={s.slider}>
